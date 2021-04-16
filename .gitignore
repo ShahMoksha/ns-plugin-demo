@@ -2,7 +2,10 @@
 hooks/
 node_modules/
 platforms/
-# demo/node_modules/
+vue-ns-demo/hooks/
+vue-ns-demo/node_modules/
+vue-ns-demo/platforms/
+
 
 
 # Logs
