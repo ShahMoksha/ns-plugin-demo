@@ -3,4 +3,9 @@ export declare class NsPluginDemo extends Common {
   // define your typings manually
   // or..
   // take the ios or android .d.ts files and copy/paste them here
+  public set(options: BrightnessOptions)
+}
+
+export interface BrightnessOptions {
+  intensity: number;
 }
