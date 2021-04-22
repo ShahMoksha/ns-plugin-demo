@@ -1,3 +1,5 @@
-import { Common } from './ns-plugin-demo.common';
-export declare class NsPluginDemo extends Common {
+export declare class NsPluginDemo {
+    getNative(): number;
+    get(): number;
+    set(options: any): void;
 }

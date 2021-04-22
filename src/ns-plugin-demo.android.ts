@@ -1,12 +1,12 @@
 import * as applicationModule from "tns-core-modules/application/application";
 import { topmost } from "tns-core-modules/ui/frame";
 import { validateOptions } from "./ns-plugin-demo.common";
+import { Utils, Device } from '@nativescript/core'
 
 export class NsPluginDemo {
   public getNative() {
     let context = applicationModule.android.context;
-    var temp=org.nativescript.brightness.Brightness.getScreenBrightness(context);
-    return temp;
+    return org.nativescript.brightness.Brightness.getScreenBrightness(context);
   }
 
   public get() {
