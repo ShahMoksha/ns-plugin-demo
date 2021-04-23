@@ -3,14 +3,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var applicationModule = require("tns-core-modules/application/application");
 var frame_1 = require("tns-core-modules/ui/frame");
 var ns_plugin_demo_common_1 = require("./ns-plugin-demo.common");
+var utils = require("tns-core-modules/utils/utils");
 var NsPluginDemo = (function () {
     function NsPluginDemo() {
     }
     NsPluginDemo.prototype.getNative = function () {
-        var context = applicationModule.android.context;
-        return org.nativescript.brightness.Brightness.getScreenBrightness(context);
+        var cResolver = utils.ad.getApplicationContext().getContentResolver();
+        return android.provider.Settings.System.getInt(cResolver, android.provider.Settings.System.SCREEN_BRIGHTNESS);
     };
     NsPluginDemo.prototype.get = function () {
+        console.log(this.getNative());
         return Math.round((this.getNative() / 255) * 100);
     };
     NsPluginDemo.prototype.set = function (options) {
@@ -27,7 +29,8 @@ var NsPluginDemo = (function () {
             var context = applicationModule.android.foregroundActivity;
             if (context) {
                 var brightnessValue = Math.round((options.intensity * 255) / 100);
-                org.nativescript.brightness.Brightness.setScreenBrightness(context, brightnessValue);
+                var cResolver = utils.ad.getApplicationContext().getContentResolver();
+                android.provider.Settings.System.putInt(cResolver, android.provider.Settings.System.SCREEN_BRIGHTNESS, brightnessValue);
             }
         }
     };

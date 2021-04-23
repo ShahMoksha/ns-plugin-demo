@@ -25,7 +25,8 @@
 		"demo.android": "npm i && cd ../vue-ns-demo && tns run android",
 		"demo.reset": "cd ../demo && npx rimraf -- hooks node_modules platforms package-lock.json",
 		"plugin.prepare": "npm run build && cd ../vue-ns-demo && tns plugin remove nativescript-ns-plugin-demo && tns plugin add ../src",
-		"clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i"
+		"clean": "npm run demo.reset && npx rimraf -- node_modules package-lock.json && npm i",
+		"start": "npm run plugin.prepare && npm run demo.android"
 	},
 	"keywords": [
 		"NativeScript",
