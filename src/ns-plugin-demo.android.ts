@@ -6,13 +6,11 @@ import * as utils from "tns-core-modules/utils/utils";
 
 export class NsPluginDemo {
   public getNative() {
-    // let context = applicationModule.android.context;
     let cResolver = utils.ad.getApplicationContext().getContentResolver();
     return android.provider.Settings.System.getInt(
       cResolver,
       android.provider.Settings.System.SCREEN_BRIGHTNESS
     );
-    // return org.nativescript.brightness.Brightness.getScreenBrightness(context);
   }
 
   public get() {
@@ -34,14 +32,9 @@ export class NsPluginDemo {
       let context = applicationModule.android.foregroundActivity;
       if (context) {
         let brightnessValue = Math.round((options.intensity * 255) / 100);
-
- let cResolver = utils.ad.getApplicationContext().getContentResolver();
-     android.provider.Settings.System.putInt(
-      cResolver,
-      android.provider.Settings.System.SCREEN_BRIGHTNESS,brightnessValue
-    );
-
-   
+        // console.log(android.provider.Settings.System.canWrite(context))
+        let cResolver = utils.ad.getApplicationContext().getContentResolver();
+        android.provider.Settings.System.putInt(cResolver, android.provider.Settings.System.SCREEN_BRIGHTNESS, brightnessValue);
       }
     }
   }

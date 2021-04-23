@@ -29,6 +29,7 @@
 
 <script>
 import { NsPluginDemo } from "nativescript-ns-plugin-demo";
+const permissions = require("nativescript-permissions");
 // let brightness = new NsPluginDemo();
 
 export default {
@@ -45,6 +46,17 @@ export default {
     this.currentValue = this.brightness.get();
     this.brightness.set({ intensity: this.currentValue });
     this.sliderValue = this.currentValue;
+    permissions
+      .requestPermission(
+        android.Manifest.permission.WRITE_SETTINGS,
+        "I need these permissions because I'm cool"
+      )
+      .then(() => {
+        console.log("Woo Hoo, I have the power!");
+      })
+      .catch(() => {
+        console.log("Uh oh, no permissions - plan B time!");
+      });
   },
 
   methods: {
